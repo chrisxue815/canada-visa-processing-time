@@ -26,8 +26,8 @@ async function main() {
     const url = new URL(location.href);
     const type = url.searchParams.get('type');
     const country = url.searchParams.get('country');
-    const time = times[type]?.[country];
-    const countryName = countryNames['country-name']?.[country];
+    const time = times[type] && times[type][country];
+    const countryName = countryNames['country-name'] && countryNames['country-name'][country];
 
     const app = new Vue({
         el: '#app',
