@@ -8,13 +8,20 @@
 
 <body>
 
-    <div id="app">
-      {{ type }} - {{countryName}} - {{time}}
+<div id="app">
+    <div>
+        <p>{{ type }}</p>
+        <p>{{ countryName }}</p>
+        <p>{{ time }}</p>
     </div>
+    <div>
+        <a href="https://github.com/chrisxue815/canada-visa-processing-time">README</a>
+    </div>
+</div>
 
-    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
 
-    <script>
+<script>
 
 async function main() {
     const timesResp = await fetch('https://www.canada.ca/content/dam/ircc/documents/json/data-ptime-en.json');
@@ -41,7 +48,7 @@ async function main() {
 
 main();
 
-    </script>
+</script>
 
 </body>
 </html>
