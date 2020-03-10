@@ -6,7 +6,7 @@ that supports URL query strings.
 
 # Example
 
-http://chrisxue815.github.io/canada-visa-processing-time/index.html?type=visitor-outside-canada&country=US
+http://chrisxue815.github.io/canada-visa-processing-time/index.html?type=visitor-outside-canada&country=US&start=2020-01-31
 
 This will show you the processing time for `visitor-outside-canada` in `US`.
 
