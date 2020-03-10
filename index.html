@@ -39,9 +39,21 @@
                 <td>Country</td>
                 <td>{{ countryName }}</td>
             </tr>
+            <tr v-if="start">
+                <td>Start Date</td>
+                <td>{{ start }}</td>
+            </tr>
             <tr>
                 <td>Processing Time</td>
                 <td><strong>{{ time }}</strong></td>
+            </tr>
+            <tr v-if="end">
+                <td>End Date</td>
+                <td>{{ end }}</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
             </tr>
             <tr>
                 <td>Last Updated</td>
@@ -54,7 +66,8 @@
     </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2"></script>
 
 <script>
 
@@ -70,7 +83,21 @@ async function main() {
     const country = url.searchParams.get('country');
     const countryName = countryNames['country-name'] && countryNames['country-name'][country];
     const time = times[type] && times[type][country];
-    const lastUpdated = times[type] && times[type]['lastupdated'];
+
+    const start = url.searchParams.get('start');
+    let end = null;
+
+    if (start && time) {
+        const parts = time.split(' ');
+        if (parts.length === 2 && !isNaN(parseInt(parts[0]))) {
+            end = moment(start, 'YYYY-MM-DD').add(parts[0], parts[1]).format('YYYY-MM-DD');
+        }
+        else {
+            end = 'N/A';
+        }
+    }
+
+    const lastUpdated = moment(times[type] && times[type]['lastupdated'], 'MMMM DD, YYYY').format('YYYY-MM-DD');
 
     const app = new Vue({
         el: '#app',
@@ -78,6 +105,8 @@ async function main() {
             type,
             countryName,
             time,
+            start,
+            end,
             lastUpdated,
         },
     });
