@@ -10,7 +10,10 @@ http://chrisxue815.github.io/canada-visa-processing-time/index.html?type=visitor
 
 This will show you the processing time for `visitor-outside-canada` in `US`.
 
-Go to the data sources below to see the full list of supported `type` and `country` values.
+Parameters:
+* type (Required): Which visa type are you applying for? Go to the data sources below to see the full list of supported values.
+* country (Required): Where are you applying from? Go to the data sources below to see the full list of supported values.
+* start (Optional): If provided, an anticipated visa approval date (start + processing time) is displayed on the page.
 
 # Data sources
 
